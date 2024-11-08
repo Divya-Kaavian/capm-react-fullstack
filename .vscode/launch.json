@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Helloworld-helloWorld",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/@sap/html5-repo-mock/index.js",
+      "args": [
+        "--standalone",
+        "/helloWorld/index.html"
+      ],
+      "cwd": "${workspaceFolder}/helloWorld/build",
+      "env": {
+        "PORT": "6004",
+        "run.config": "{\"handlerId\":\"html5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/Helloworld/helloWorld\"}"
+      },
+      "envFile": "${workspaceFolder}/helloWorld/.env1",
+      "preLaunchTask": "Run Helloworld"
+    }
+  ]
+}

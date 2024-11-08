@@ -1,0 +1,80 @@
+_schema-version: "3.2"
+ID: Helloworld
+version: 0.0.1
+modules:
+- name: Helloworld-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: Helloworld-destination-service
+    parameters:
+      content-target: true
+  - name: Helloworld_html_repo_host
+    parameters:
+      service-key:
+        name: Helloworld_html_repo_host-key
+  - name: uaa_Helloworld
+    parameters:
+      service-key:
+        name: uaa_Helloworld-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: ReactDemo_Helloworld_html_repo_host
+          ServiceInstanceName: Helloworld-html5-app-host-service
+          ServiceKeyName: Helloworld_html_repo_host-key
+          sap.cloud.service: ReactDemo
+        - Authentication: OAuth2UserTokenExchange
+          Name: ReactDemo_uaa_Helloworld
+          ServiceInstanceName: Helloworld-xsuaa-service
+          ServiceKeyName: uaa_Helloworld-key
+          sap.cloud.service: ReactDemo
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: Helloworld_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: Helloworld_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - helloWorld-content.zip
+      name: helloWorld
+      target-path: resources/
+- name: helloWorld
+  type: html5
+  path: helloWorld
+  build-parameters:
+    builder: custom
+    commands:
+    - npm install
+    - npm run build
+    supported-platforms: []
+resources:
+- name: Helloworld-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+    service: destination
+    service-name: Helloworld-destination-service
+    service-plan: lite
+- name: Helloworld_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: Helloworld-html5-app-host-service
+    service-plan: app-host
+- name: uaa_Helloworld
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: Helloworld-xsuaa-service
+    service-plan: application
