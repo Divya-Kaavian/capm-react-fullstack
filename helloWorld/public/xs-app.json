@@ -10,6 +10,13 @@
       "csrfProtection": false,
       "source": "^/NorthWind_full_url/(.*)$",
       "destination": "NorthWind_full_url",
+      "target": "$2"
+    },
+    {
+      "authenticationType": "none",
+      "csrfProtection": false,
+      "source": "^/capm/(.*)$",
+      "destination": "capm",
       "target": "$1"
     },
     {
