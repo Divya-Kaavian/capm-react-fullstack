@@ -8,9 +8,10 @@ import HelloWorld from "pages/HelloWorld";
 const App = () => {
   return (
     <div className="App full-height">
-      <AppBar />
+      {/* <AppBar /> */}
       {/* <HelloWorld/> */}
-      <MasterPage />
+      <HelloWorld/>
+      {/* <MasterPage /> */}
     </div>
   );
 };

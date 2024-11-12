@@ -1,22 +1,11 @@
-// const cors = require('cors');
-// const cds = require('@sap/cds');
-
-// cds.on("bootstrap", async(app)=>{
-//     app.use(cors({ origin: "*"}));
-// })
-const cors = require('cors');
 const cds = require('@sap/cds');
-
-cds.on('bootstrap', async (app) => {
   
-app.use(cors({origin: "*"}))
-
-  // If you want to log the requests to check
-  app.use((req, res, next) => {
-    console.log("Helo");
-    console.log(`${req.method} request to ${req.url}`);
-    next();
-  });
-});
-
-cds.connect();  // Make sure to connect the service after setting up CORS
+const ORIGINS = { 'https://port3002-workspaces-ws-n9djj.us10.trial.applicationstudio.cloud.sap': 1}
+cds.on('bootstrap', app => app.use ((req, res, next) => {
+    if (req.headers.origin in ORIGINS) {
+      res.set('access-control-allow-origin', req.headers.origin)
+      if (req.method === 'OPTIONS') // preflight request
+        return res.set('access-control-allow-methods', 'GET,HEAD,PUT,PATCH,POST,DELETE').end()
+    }
+    next()
+}))

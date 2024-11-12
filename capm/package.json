@@ -16,13 +16,16 @@
     "requires": {
       "[production]": {
         "db": "hana",
-        "auth": "xsuaa"
+        "auth": "mocked"
       }
     },
     "sql": {
       "native_hana_associations": false
     }
   },
+  "server": {
+      "cors": true
+    },
   "devDependencies": {
     "@sap/cds-dk": "^8"
   }
