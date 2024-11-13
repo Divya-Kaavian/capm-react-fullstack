@@ -9,7 +9,6 @@ const App = () => {
   return (
     <div className="App full-height">
       {/* <AppBar /> */}
-      {/* <HelloWorld/> */}
       <HelloWorld/>
       {/* <MasterPage /> */}
     </div>

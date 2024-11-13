@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Box } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
-import { getTableData, getTableCount } from "api";
+import { getTableData, getTableCount, getUser } from "api";
 
 const columns = [
   { field: "CategoryName", headerName: "CategoryName", width: 250 },
@@ -28,6 +28,7 @@ export default function MasterPage() {
         setRowCount(count);
       }
 
+      console.log(await getUser());
       const _items = await getTableData({
         $top: PAGE_SIZE,
         $skip: skip

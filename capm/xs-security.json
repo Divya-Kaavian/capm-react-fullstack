@@ -1,5 +1,8 @@
 {
   "scopes": [],
   "attributes": [],
-  "role-templates": []
+  "role-templates": [],
+  "authentication": {
+    "method": "dummy"
+  }
 }

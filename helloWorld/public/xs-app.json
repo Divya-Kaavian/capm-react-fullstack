@@ -13,7 +13,7 @@
       "target": "$2"
     },
     {
-      "authenticationType": "none",
+      "authenticationType": "OAuth2UserTokenExchange",
       "csrfProtection": false,
       "source": "^/capm/(.*)$",
       "destination": "capm",

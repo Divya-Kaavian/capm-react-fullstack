@@ -17,6 +17,9 @@
       "[production]": {
         "db": "hana",
         "auth": "mocked"
+      },
+      "[development]":{
+        "auth": "dummy"
       }
     },
     "sql": {

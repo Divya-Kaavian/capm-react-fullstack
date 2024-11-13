@@ -1,0 +1,11 @@
+{
+    "welcomeFile": "/index.html",
+    "authenticationMethod": "none",
+    "cors": {
+      "allowedOrigins": [
+        "https://port3002-workspaces-ws-n9djj.us10.trial.applicationstudio.cloud.sap"
+      ],
+      "allowedMethods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    }
+  }
+  
