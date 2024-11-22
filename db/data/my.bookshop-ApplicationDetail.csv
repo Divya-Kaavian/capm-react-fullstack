@@ -1,0 +1,3 @@
+ApplicationId,UniqueReference,ApplicationStatus,NumberOfTenants,buildingDetailsRef_BuildingId
+1001,APP12345,Active,5,1011
+1002,APP12346,Pending,3,1012;1013
